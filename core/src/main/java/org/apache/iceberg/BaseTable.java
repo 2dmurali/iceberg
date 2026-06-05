@@ -93,7 +93,8 @@ public class BaseTable
 
   @Override
   public IncrementalChangelogScan newIncrementalChangelogScan() {
-    return new BaseIncrementalChangelogScan(this);
+    return new BaseIncrementalChangelogScan(
+        this, schema(), ImmutableTableScanContext.builder().metricsReporter(reporter).build());
   }
 
   @Override
